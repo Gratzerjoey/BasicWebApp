@@ -30,7 +30,7 @@ public class QueryProcessor {
         else if (query.contains("largest")){
             var n = query.split("largest:");
             var num = Arrays.stream(n[1].split(",")).map(a->a.replace("%20", "")).map(Integer::parseInt).reduce(Math::max);
-            return String.valueOf(num);
+            return String.valueOf(num.get());
         }
         else {
             return "";
@@ -38,7 +38,8 @@ public class QueryProcessor {
     }
 
     public static void main(String[] args) {
-        String a = "/api?q=66251da0:%20what%20is%2019%20plus%202";
-        new QueryProcessor().process(a);
+        String a = "/api?q=9a499840:%20what%20is%2015%20plus%201";
+        String x = new QueryProcessor().process(a);
+        System.out.println();
     }
 }
