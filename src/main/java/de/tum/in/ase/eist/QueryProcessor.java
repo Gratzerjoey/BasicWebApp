@@ -2,6 +2,8 @@ package de.tum.in.ase.eist;
 
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
+
 import static java.lang.Integer.parseInt;
 
 @Service
@@ -24,6 +26,11 @@ public class QueryProcessor {
                 }
             }
             return String.valueOf(parseInt(split[i-1]) + parseInt(split[i+1]));
+        }
+        else if (query.contains("largest")){
+            var n = query.split("largest:");
+            var num = Arrays.stream(n).map(Integer::parseInt).reduce(Math::max);
+            return String.valueOf(num);
         }
         else {
             return "";
