@@ -38,7 +38,7 @@ public class QueryProcessor {
     }
 
     public static void main(String[] args) {
-        String a = " 123";
+        String a = " 1235";
         Integer.parseInt(a);
     }
 }
