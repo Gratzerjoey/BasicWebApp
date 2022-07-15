@@ -18,7 +18,7 @@ public class QueryProcessor {
         } else if (query.contains("name")) {
            return "awef";
         } else if (query.contains("plus")) { // TODO extend the programm here
-            var split = query.split(" ");
+            var split = query.split("%20");
             int i = 0;
             for(; i < split.length; ++i) {
                 if (split[i].equals("plus")) {
@@ -29,7 +29,7 @@ public class QueryProcessor {
         }
         else if (query.contains("largest")){
             var n = query.split("largest:");
-            var num = Arrays.stream(n[1].split(",")).map(a->a.replace(" ", "")).map(Integer::parseInt).reduce(Math::max);
+            var num = Arrays.stream(n[1].split(",")).map(a->a.replace("%20", "")).map(Integer::parseInt).reduce(Math::max);
             return String.valueOf(num.get());
         }
         else {
@@ -38,7 +38,7 @@ public class QueryProcessor {
     }
 
     public static void main(String[] args) {
-        String a = "/api?q=ca0dfce0:%20what%20is%2014%20plus%2014";
+        String a = "26d7af00:%20which%20of%20the%20following%20numbers%20is%20the%20largest:%20829,%20647,%201,%2029";//.replace("%20", " ");
         String x = new QueryProcessor().process(a);
         System.out.println();
     }
