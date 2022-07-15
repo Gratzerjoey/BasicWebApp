@@ -29,7 +29,7 @@ public class QueryProcessor {
         }
         else if (query.contains("largest")){
             var n = query.split("largest:");
-            var num = Arrays.stream(n).map(String::trim).map(Integer::parseInt).reduce(Math::max);
+            var num = Arrays.stream(n[1].split(",")).map(String::trim).map(Integer::parseInt).reduce(Math::max);
             return String.valueOf(num);
         }
         else {
