@@ -16,8 +16,14 @@ public class QueryProcessor {
         } else if (query.contains("name")) {
            return "awef";
         } else if (query.contains("plus")) { // TODO extend the programm here
-            var split = query.split("plus");
-            return String.valueOf(parseInt(split[0]) + parseInt(split[1]));
+            var split = query.split(" ");
+            int i = 0;
+            for(; i < split.length; ++i) {
+                if (split[i].equals("plus")) {
+                    break;
+                }
+            }
+            return String.valueOf(parseInt(split[i-1]) + parseInt(split[i+1]));
         }
         else {
             return "";
