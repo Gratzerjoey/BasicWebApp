@@ -18,7 +18,7 @@ public class QueryProcessor {
         } else if (query.contains("name")) {
            return "awef";
         } else if (query.contains("plus")) { // TODO extend the programm here
-            var split = query.split(" ");
+            var split = query.split("%20");
             int i = 0;
             for(; i < split.length; ++i) {
                 if (split[i].equals("plus")) {
@@ -29,7 +29,7 @@ public class QueryProcessor {
         }
         else if (query.contains("largest")){
             var n = query.split("largest:");
-            var num = Arrays.stream(n[1].split(",")).map(String::trim).map(Integer::parseInt).reduce(Math::max);
+            var num = Arrays.stream(n[1].split(",")).map(a->a.replace("%20", "")).map(Integer::parseInt).reduce(Math::max);
             return String.valueOf(num);
         }
         else {
@@ -38,7 +38,7 @@ public class QueryProcessor {
     }
 
     public static void main(String[] args) {
-        String a = " 1235";
-        Integer.parseInt(a);
+        String a = "/api?q=66251da0:%20what%20is%2019%20plus%202";
+        new QueryProcessor().process(a);
     }
 }
