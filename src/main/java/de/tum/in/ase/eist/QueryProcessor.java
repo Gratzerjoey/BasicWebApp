@@ -29,11 +29,16 @@ public class QueryProcessor {
         }
         else if (query.contains("largest")){
             var n = query.split("largest:");
-            var num = Arrays.stream(n).map(Integer::parseInt).reduce(Math::max);
+            var num = Arrays.stream(n).map(String::trim).map(Integer::parseInt).reduce(Math::max);
             return String.valueOf(num);
         }
         else {
             return "";
         }
+    }
+
+    public static void main(String[] args) {
+        String a = " 123";
+        Integer.parseInt(a);
     }
 }
